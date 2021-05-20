@@ -10,14 +10,13 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:MessageProviderImpl
- * @author: sunxc
- * @date: 2020/11/22/0022-16:42
- * @version: 1.0
+ * //@EnableBinding(Source.class) //  不是和controller打交道的service,而是发送消息的推送服务类,定义消息的推送管道
+ *
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/22/0022-16:42
  */
-@EnableBinding(Source.class) //  不是和controller打交道的service,而是发送消息的推送服务类,定义消息的推送管道
+@EnableBinding(Source.class)
 public class MessageProviderImpl implements IMessageProvider {
     @Resource
     private MessageChannel output;

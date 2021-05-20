@@ -8,23 +8,27 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentConsulController
- * @author: sunxc
- * @date: 2020/11/20/0020-12:17
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/20 12:17
  */
 @RestController
 @Slf4j
 public class PaymentConsulController {
 
     @Value("${server.port}")
-    private  String serverPort;
+    private String serverPort;
 
-    @RequestMapping(value="/payment/consul")
-    public String paymentConsul(){
-        return  "springcloud-cosul-"+serverPort+"\t"+ UUID.randomUUID().toString();
+    /**
+     * paymentConsul
+     *
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 21:26
+     */
+    @RequestMapping(value = "/payment/consul")
+    public String paymentConsul() {
+        return "springcloud-cosul-" + serverPort + "\t" + UUID.randomUUID().toString();
     }
 
 }

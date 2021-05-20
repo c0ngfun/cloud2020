@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentController
- * @author: sunxc
- * @date: 2020/11/18/0018-15:47
- * @version: 1.0
+ * //@RestController  /*必须是这个注解，因为是模拟前后端分离的restful风格的请求，要求每个方法返回 json
+ *
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/18 15:47
  */
-@RestController  /*必须是这个注解，因为是模拟前后端分离的restful风格的请求，要求每个方法返回 json*/
+@RestController
 @Slf4j
 public class PaymentController {
     @Resource
@@ -32,7 +31,7 @@ public class PaymentController {
         log.info("______********插入结果成功" + result);
 
         if (result > 0) {
-            return new CommonResult(200, "插入成功serverport:"+serverPort, result);
+            return new CommonResult(200, "插入成功serverport:" + serverPort, result);
         } else {
             return new CommonResult(444, "插入失败", null);
         }
@@ -44,14 +43,14 @@ public class PaymentController {
         log.info("______********查询结果：" + payment);
 
         if (payment != null) {
-            return new CommonResult(200, "查询成功,serverPort:"+serverPort, payment);
+            return new CommonResult(200, "查询成功,serverPort:" + serverPort, payment);
         } else {
-            return new CommonResult(444, "查询失败:id"+id, null);
+            return new CommonResult(444, "查询失败:id" + id, null);
         }
     }
 
     @GetMapping(value = "/payment/lb")
-    public String getPamentLB() {
+    public String getPamentLoadBalance() {
         return serverPort;
     }
 }

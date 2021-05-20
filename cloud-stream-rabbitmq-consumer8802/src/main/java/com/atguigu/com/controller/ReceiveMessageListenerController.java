@@ -8,22 +8,25 @@ import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:ReceiveMessageListenercontroller
- * @author: sunxc
- * @date: 2020/11/22/0022-17:04
- * @version: 1.0
+ * //@EnableBinding(Sink.class)  //消费值 消费消息
+ *
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/22 17:04
  */
-
 @Component
-@EnableBinding(Sink.class)  //消费值 消费消息
-public class ReceiveMessageListenercontroller {
+@EnableBinding(Sink.class)
+public class ReceiveMessageListenerController {
     @Value("${server.port}")
     private String serverPort;
 
+    /**
+     * @param message message
+     * @author sunxc50
+     * @date 2021/05/20 21:28
+     */
     @StreamListener(Sink.INPUT)
-    public void input(Message<String> message){
+    public void input(Message<String> message) {
         System.out.println("消费者1号，serverport: " + serverPort + "，接受到的消息：" + message.getPayload());
     }
 }

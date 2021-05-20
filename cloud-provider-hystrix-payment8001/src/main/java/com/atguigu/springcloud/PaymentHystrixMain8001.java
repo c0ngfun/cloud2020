@@ -10,12 +10,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentHystrixMain8001
- * @author: sunxc
- * @date: 2020/11/21/0021-14:12
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/21 14:12
  */
 @SpringBootApplication (exclude = DataSourceAutoConfiguration.class)
 @EnableEurekaClient

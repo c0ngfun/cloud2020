@@ -8,19 +8,18 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:OrderMain80
- * @author: sunxc
- * @date: 2020/11/18/0018-17:16
- * @version: 1.0
+ * //消费者 实现ribbon负载均衡，自定义负载均衡规则myRule      --默认是轮询算法
+ * //@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MyRule.class)
+ *
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/18 17:16
  */
 @SpringBootApplication
 @EnableEurekaClient
-//消费者 实现ribbon负载均衡，自定义负载均衡规则myrule      --默认是轮询算法
-//@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MyRule.class)
+
 public class OrderMain80 {
     public static void main(String[] args) {
-        SpringApplication.run(OrderMain80.class,args);
+        SpringApplication.run(OrderMain80.class, args);
     }
 }

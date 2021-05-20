@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentServiceImpl
- * @author: sunxc
- * @date: 2020/11/18/0018-16:36
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/18 16:36
  */
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -25,6 +22,7 @@ public class PaymentServiceImpl implements PaymentService {
     public int create(Payment payment) {
         return paymentDao.create(payment);
     }
+
     @Override
     public Payment getPaymentById(Long id) {
         return paymentDao.getPaymentById(id);

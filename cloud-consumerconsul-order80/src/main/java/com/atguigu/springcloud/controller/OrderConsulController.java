@@ -8,25 +8,30 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:OrderConsulController
- * @author: sunxc
- * @date: 2020/11/20/0020-17:06
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/20 17:06
  */
 @RestController
 @Slf4j
 public class OrderConsulController {
-    // public static final String PAYMENT_URL = "http://localhost:8001";   //这里地址写死了
-    // 重点是这里，改成 提供者在Eureka 上的名称，而且无需写端口号
-    public static final String PAYMENT_URL = "http://consul-provider-service";   //这里地址写死了
+    /**
+     * // public static final String PAYMENT_URL = "http://localhost:8001";   //这里地址写死了
+     * // 重点是这里，改成 提供者在Eureka 上的名称，而且无需写端口号
+     */
+    public static final String PAYMENT_URL = "http://consul-provider-service";
     @Resource
     private RestTemplate restTemplate;
 
+    /**
+     * paymentConsulInfo
+     *
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 18:12
+     */
     @GetMapping("/consumer/consul")
     public String paymentConsulInfo() {
-        String forObject = restTemplate.getForObject(PAYMENT_URL + "/payment/consul", String.class);
-        return forObject;
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/consul", String.class);
     }
 }

@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:SendMessageController
- * @author: sunxc
- * @date: 2020/11/22/0022-16:47
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/22/0022-16:47
  */
 @RestController
 public class SendMessageController {
@@ -20,8 +17,15 @@ public class SendMessageController {
     @Resource
     private IMessageProvider messageProvider;
 
+    /**
+     * sendMessage
+     *
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 21:31
+     */
     @GetMapping("/sendMessage")
-    public String sendMessage(){
+    public String sendMessage() {
         return messageProvider.send();
     }
 }

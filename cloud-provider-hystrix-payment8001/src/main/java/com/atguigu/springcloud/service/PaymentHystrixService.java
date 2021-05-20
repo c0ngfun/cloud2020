@@ -8,26 +8,22 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentHystrixService
- * @author: sunxc
- * @date: 2020/11/21/0021-14:25
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/21 14:25
  */
 @Service
 public class PaymentHystrixService {
 
-
 //    ======服务降级
-
     /**
      * 可以正常访问的方法
-     *
-     * @param id
-     * @return
+     * @author sunxc50
+     * @date 2021/05/20 21:10
+     * @param id ID
+     * @return java.lang.String
      */
-    public String paymentinfo_Ok(Integer id) {
+    public String paymentInfoOk(Integer id) {
         return "线程池：" + Thread.currentThread().getName() + "--paymentInfo_OK，id:" + id;
     }
 
@@ -38,7 +34,7 @@ public class PaymentHystrixService {
             //设置峰值，超过 3 （3000ms）秒，就会调用兜底方法,三秒以内走正常的方法
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
     })
-    public String paymentinfo_Timeout(Integer id) {
+    public String paymentInfoTimeout(Integer id) {
         int interTime = 2;
         try {
             TimeUnit.SECONDS.sleep(interTime);
@@ -49,8 +45,15 @@ public class PaymentHystrixService {
         return "线程池：" + Thread.currentThread().getName() + "--paymentInfo_Timeout，id:" + id + "耗时" + "秒钟--";
     }
 
-    //兜底方法，根据上述配置，程序内发生异常、或者运行超时，都会执行该兜底方法
-    public String paymentinfo_TimeoutHandler(Integer id) {
+    /**
+     * 兜底方法，根据上述配置，程序内发生异常、或者运行超时，都会执行该兜底方法
+     *
+     * @param id ID
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 21:10
+     */
+    public String paymentInfoTimeOutHandler(Integer id) {
         return "线程池：" + Thread.currentThread().getName() + "--paymentinfo_TimeoutHandler，8001系统忙，请稍后再试，id:" + id + "\t" + "秒钟--" + "o(╥﹏╥)o";
     }
 
@@ -73,7 +76,7 @@ public class PaymentHystrixService {
         return Thread.currentThread().getName() + "\t" + "调用成功，流水号：" + serialNumber;
     }
 
-    public String paymentCircuitBreaker_fallback(Integer id) {
+    public String paymentCircuitBreakerFallBack(Integer id) {
         return "id 不能为负数，请稍后再试....";
     }
 }

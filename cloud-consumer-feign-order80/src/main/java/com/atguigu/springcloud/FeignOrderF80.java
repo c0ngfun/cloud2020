@@ -5,15 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:FeignOrderF80
- * @author: sunxc
- * @date: 2020/11/21/0021-11:48
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/21 11:48
  */
 @SpringBootApplication
 @EnableFeignClients // 使用feign 激活并开启
+
 public class FeignOrderF80 {
     public static void main(String[] args) {
         SpringApplication.run(FeignOrderF80.class,args);

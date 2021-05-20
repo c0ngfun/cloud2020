@@ -6,17 +6,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @description: ApplicationContextConfig
- * @projectname:cloud2020
- * @classname:ApplicationContextConfig
- * @author: sunxc
- * @date: 2020/11/18/0018-17:44
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/18 17:44
  */
 @Configuration
 public class ApplicationContextConfig {
+    /**
+     * //使用@LoadBalanced  赋予RestTemplate 负载均衡能力   （轮询）
+     *
+     * @return org.springframework.web.client.RestTemplate
+     * @author sunxc50
+     * @date 2021/05/20 18:11
+     */
     @Bean
-    @LoadBalanced   //使用@LoadBalanced  赋予RestTemplate 负载均衡能力   （轮询）
+    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

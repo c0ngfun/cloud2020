@@ -5,16 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
- * @description: StreamMQMain8803
- * @projectname:cloud2020
- * @classname:StreamMQMain8803
- * @author: sunxc
- * @date: 2020/11/22/0022-19:23
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/22 16:34
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class StreamMQMain8803 {
+public class StreamMqMain8801 {
     public static void main(String[] args) {
-        SpringApplication.run(StreamMQMain8803.class,args);
+        SpringApplication.run(StreamMqMain8801.class, args);
     }
 }

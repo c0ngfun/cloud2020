@@ -7,20 +7,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentHystrixService
- * @author: sunxc
- * @date: 2020/11/21/0021-15:03
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/21 15:03
  */
 @Service
-@FeignClient(value = "CLOUD-PAYMENT-HYSTRIX-SERVICE",fallback = PaymentFallbackServiceImpl.class)
+@FeignClient(value = "CLOUD-PAYMENT-HYSTRIX-SERVICE", fallback = PaymentFallbackServiceImpl.class)
 public interface PaymentHystrixService {
 
+    /**
+     * paymentInfoOk
+     *
+     * @param id id
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 18:34
+     */
     @GetMapping("/payment/hystrix/{id}")
-    public String paymentInfo_OK(@PathVariable("id")Integer id);
+    String paymentInfoOk(@PathVariable("id") Integer id);
 
+    /**
+     * paymentInfoTimeout
+     *
+     * @param id id
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 18:34
+     */
     @GetMapping("/payment/hystrix/timeout/{id}")
-    public String paymentInfo_Timeout(@PathVariable("id")Integer id);
+    String paymentInfoTimeout(@PathVariable("id") Integer id);
 }

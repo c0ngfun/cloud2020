@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author sunxc
- * @date 2020/11/22/0022-12:39
+ * @date 2020/11/22 12:39
  */
 @RestController
 @RefreshScope //实现刷新功能

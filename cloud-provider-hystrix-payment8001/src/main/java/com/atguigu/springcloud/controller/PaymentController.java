@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:PaymentController
- * @author: sunxc
- * @date: 2020/11/21/0021-14:30
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/21 14:30
  */
 @RestController
 @Slf4j
@@ -27,24 +24,46 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
+    /**
+     * paymentInfoOk
+     *
+     * @param id id
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 21:07
+     */
     @GetMapping("/payment/hystrix/{id}")
-    public String paymentInfo_OK(@PathVariable("id")Integer id){
-
-        String result = paymentHystrixService.paymentinfo_Ok(id);
-        log.info("paymentInfo_OKKKKOKKK:"+result);
+    public String paymentInfoOk(@PathVariable("id") Integer id) {
+        String result = paymentHystrixService.paymentInfoOk(id);
+        log.info("paymentInfo_OKKKKOKKK:" + result);
         return result;
     }
 
+    /**
+     * paymentInfoTimeout
+     *
+     * @param id id
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 21:08
+     */
     @GetMapping("/payment/hystrix/timeout/{id}")
-    public String paymentInfo_Timeout(@PathVariable("id")Integer id){
-        String timeoutresult = paymentHystrixService.paymentinfo_Timeout(id);
-        log.info("paymentInfo_timeout"+timeoutresult);
-        return timeoutresult;
+    public String paymentInfoTimeout(@PathVariable("id") Integer id) {
+        String timeOutResult = paymentHystrixService.paymentInfoTimeout(id);
+        log.info("paymentInfo_timeout" + timeOutResult);
+        return timeOutResult;
     }
 
-    //====服务熔断
+    /**
+     * 服务熔断
+     *
+     * @param id ID
+     * @return java.lang.String
+     * @author sunxc50
+     * @date 2021/05/20 21:08
+     */
     @GetMapping("/payment/circuit/{id}")
-    public String paymentCircuitBreaker(@PathVariable("id")Integer id){
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
         return paymentHystrixService.paymentCircuitBreaker(id);
     }
 }

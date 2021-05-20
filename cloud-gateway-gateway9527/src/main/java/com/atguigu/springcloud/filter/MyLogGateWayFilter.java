@@ -12,24 +12,28 @@ import reactor.core.publisher.Mono;
 import java.util.Date;
 
 /**
- * @description:
- * @projectname:cloud2020
- * @classname:MyLogGateWayFilter
- * @author: sunxc
- * @date: 2020/11/21/0021-23:51
- * @version: 1.0
+ * @author sunxc
+ * @version 1.0
+ * @date 2020/11/21/0021-23:51
  */
 @Component
 @Slf4j
-public class MyLogGateWayFilter implements GlobalFilter,Ordered {
+public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
-    /*中的全局过滤器*/
+    /**
+     * 中的全局过滤器
+     *
+     * @param exchange chain
+     * @return reactor.core.publisher.Mono<java.lang.Void>
+     * @author sunxc50
+     * @date 2021/05/20 18:41
+     */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        System.out.println("------come in MyGlobalFilter : "+ new Date());
+        System.out.println("------come in MyGlobalFilter : " + new Date());
         String uname = exchange.getRequest().getQueryParams().getFirst("uname");
         //合法性检验
-        if(uname == null){
+        if (uname == null) {
             System.out.println("----用户名为null,非法用户，请求不被接受");
             //设置 response 状态码   因为在请求之前过滤的，so就算是返回NOT_FOUND 也不会返回错误页面
             exchange.getResponse().setStatusCode(HttpStatus.NOT_FOUND);
