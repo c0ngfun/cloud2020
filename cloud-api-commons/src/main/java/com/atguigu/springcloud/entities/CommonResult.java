@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * 如果前后端分离，这个是提供给前端信息和数据的类
+ *
  * @author sunxc
  * @date 2020/11/17 18:37
  */
@@ -20,14 +21,14 @@ public class CommonResult<T> {
     private String message;
 
     /**
-    * data
-    */
+     * data
+     */
     private T data;
 
     /**
      * 查询为空的时候使用的构造器
      *
-     * @param code code
+     * @param code    code
      * @param message message
      */
     public CommonResult(Integer code, String message) {
