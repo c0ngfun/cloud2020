@@ -1,0 +1,14 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: nacos-payment-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  #配置nacos地址  比如支付中心微服务9001就注册在这个地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

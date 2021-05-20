@@ -1,0 +1,33 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center  # 注册进eureka Server 的微服务名
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/c0ngfun/community.git # github 仓库位置 github上面git仓库的名称
+          ## 搜索目录
+          search-paths:
+            - community
+          # 读取的分支
+          label: master
+
+# rabbitMq的相关配置
+rabbitmq:
+  host: localhost
+  port: 5672  # 这里没错，虽然rabbitMQ网页是 15672
+  username: guest
+  password: guest
+
+# rabbitmq 的相关配置2 暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/  # eureka Server的地址
